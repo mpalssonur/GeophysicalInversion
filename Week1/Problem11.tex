@@ -1,2 +1,28 @@
 \section*{Problem 1.1}
-Content
+Suppose that you determine the masses of 100 objects by weighing the first, then weighing the first and second together, and then weighing the rest in triplets: the first, second, and third; the second, third, and fourth; and so forth.
+\subsection*{A}
+Identify the data and model parameters in this problem. How many of each are there?
+\subsubsection*{Solution}
+The data is the measurements of the triples. The model parameters are estimates of the real weight of the 100 objects. There are 100 of each.
+\subsection*{B}
+Write down the matrix $ \mathbf{G} $ in the equation $ \mathbf{d} = \mathbf{Gm}$ that relates the data to the model parameters.
+\subsubsection*{Solution}
+\begin{equation*}
+\mathbf{G} = \begin{bmatrix}
+1 & 0 & 0 & 0 & \cdots & \cdots & \cdots & \cdots & 0 \\
+1 & 1 & 0 & 0 & & & & & \vdots \\
+1 & 1 & 1 & 0 & & & & & \vdots \\
+0 & 1 & 1 & 1 & & & & & \vdots \\
+\vdots & & & & \ddots & & & & \vdots \\
+\vdots & & & & & 1 & 1 & 1 & 0\\
+0 & \cdots & \cdots & \cdots & \cdots & 0 & 1 & 1 & 1  \\
+\end{bmatrix}
+\end{equation*}
+\subsection*{C}
+How sparse is $ \mathbf{G} $? What percent of it is zero
+\subsubsection*{Solution}
+Approximately $97\%$ is zero. For a more precise estimate that takes the first two lines into account; we have:
+\begin{equation*}
+    1 - \frac{\frac{1}{100} + \frac{2}{100} + 98\times \frac{3}{100}}{100} = 1- \frac{297}{100^2} = \frac{9703}{10000}
+\end{equation*}
+This means that $97.03\%$ of the matrix is zero.

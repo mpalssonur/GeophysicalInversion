@@ -1,2 +1,27 @@
 \section*{Problem 1.2}
-Content
+Suppose that you determine the height of 50 objects by measuring the first, and then stacking the second on top of the first and measuring their combined height, stacking the third on top of the first two and measuring their combined height, and so forth.
+\subsection*{A}
+Identify the data and model parameters in this problem. How many of each are there?
+\subsubsection*{Solution}
+The data are the height measurements of the different stacks. The model parameters are estimates of the heights of individual objects. There are 50 of each.
+\subsection*{B}
+Write down the matrix $ \mathbf{G} $ in the equation $ \mathbf{d} = \mathbf{Gm}$ that relates the data to the model parameters.
+\subsubsection*{Solution}
+\begin{equation*}
+\mathbf{G} = \begin{bmatrix}
+1 & 0 & 0 & 0 & \cdots  & 0 \\
+1 & 1 & 0 & 0 & & \vdots \\
+1 & 1 & 1 & 0 & & \vdots \\
+1 & 1 & 1 & 1 & & \vdots \\
+\vdots & & & & \ddots & \vdots \\
+1 & 1 & 1 & 1 & \cdots & 1  \\
+\end{bmatrix}
+\end{equation*}
+\subsection*{C}
+How sparse is $ \mathbf{G} $? What percent of it is zero
+\subsubsection*{Solution}
+We can immediately see that slightly less than half of the matrix will be zero. For a more precise estimate we can see that line $n$ contains the number 1 $n$ times. To get the total number of 1s we can use the formula $ \frac{n(n+1)}{2}$ to add up the numbers from 1 to 50 and then divide by the total number of elements: $50^2$.
+\begin{equation*}
+    \frac{\frac{50 \times 51}{2}}{50^2} = \frac{1275}{2500} = 0.51
+\end{equation*}
+Therefore $100-51=49\%$ of the matrix is zero.
