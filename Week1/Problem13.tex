@@ -1,2 +1,37 @@
 \section*{Problem 1.3}
-Content
+Write a program to compute $\mathbf{G}$ in the case of the cubic equation, $T = a + bz + cz^2 + dz^3$. Assume that 11 $z$s are equally spaced from 0 to 10.
+\subsection*{Solution}
+\begin{minted}{python3}
+# Compute the G matrix for a cubic polynomial model given vector z.
+# z is a vector
+# z is represented either as a 1D array or a 2D array column vector (z.shape[1] == 1)
+def ComputeG(z):
+  n = z.shape[0]
+  
+  #In case z is a 1D array
+  if len(z.shape) == 1:
+    z = z.reshape(n,1)
+
+  G = np.concatenate((np.ones((n,1)), z, z**2, z**3), axis = 1)
+  return G
+
+z = np.arange(11)
+print(ComputeG(z))
+\end{minted}
+
+Output:
+
+\begin{minted}{python}
+[[   1.    0.    0.    0.]
+ [   1.    1.    1.    1.]
+ [   1.    2.    4.    8.]
+ [   1.    3.    9.   27.]
+ [   1.    4.   16.   64.]
+ [   1.    5.   25.  125.]
+ [   1.    6.   36.  216.]
+ [   1.    7.   49.  343.]
+ [   1.    8.   64.  512.]
+ [   1.    9.   81.  729.]
+ [   1.   10.  100. 1000.]]
+    
+\end{minted}
