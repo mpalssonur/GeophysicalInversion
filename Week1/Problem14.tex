@@ -1,0 +1,45 @@
+\section*{Problem 1.4}
+Let the data $\mathbf{d}$ be the running average of the model parameters, $\mathbf{m}$, computed by averaging groups of three neighboring ponts; that is, $d_i = (m_{i-1} + m_i + m_{i+1})/3$
+\subsection*{A}
+What is the matrix $\mathbf{G}$ in the equation $\mathbf{d} = \mathbf{Gm}$ in this case?
+\subsubsection*{Solution}
+The matrix $\mathbf{G}$ is the matrix with zeros almost everywhere exept around the diagonal where the number $\frac{1}{3}$ appears three times (See section B for deails).
+\subsection*{B}
+What problems arise at the top and bottom rows of the matrix and how can you deal with them?
+\subsubsection*{Solution}
+The defenition of the matrix runs into problems at the boundaries where either index, $i-1$ or $i+1$ are out of bounds and the corresponding parameter doesn't exist. There are two straightforward solutions.
+\subsubsection*{Possibility 1}
+We take the average of the available parameters, giving us: 
+\begin{eqnarray*}
+    d_1 =& (m_1 + m_2)/2 \\
+    d_N =& (m_{N-1} + m_N)/2
+\end{eqnarray*}
+Where $N$ is the total number of parameters, which will be equal to the total number of datapoints for this example. This yields the matrix:
+\begin{equation*}
+    \mathbf{G} = 
+    \begin{bmatrix}
+        \frac{1}{2} & \frac{1}{2} & 0 & 0 & \cdots & \cdots & \cdots & \cdots & 0\\
+        \frac{1}{3} & \frac{1}{3} & \frac{1}{3} & 0 & & & & & \vdots \\
+        0 & \frac{1}{3} & \frac{1}{3} & \frac{1}{3} & & & & & \vdots \\
+        \vdots & & & & \ddots & & & & \vdots \\
+        \vdots & & & & & \frac{1}{3} & \frac{1}{3} & \frac{1}{3} & 0\\
+        \vdots & & & & & 0 & \frac{1}{3} & \frac{1}{3} & \frac{1}{3}\\
+        0 & \cdots & \cdots & \cdots & \cdots & 0 & 0 & \frac{1}{2} & \frac{1}{2}\\
+    \end{bmatrix}
+\end{equation*}
+\subsubsection*{Possibility 2}
+We simply ignore the boundary. This is for example often done in image processing when applying a convolutional filter. This means that $\mathbf{d}$ will have 2 fewer elements than $\mathbf{m}$ which might not be desirable. This approach would yield the matrix
+\begin{equation*}
+    \mathbf{G} = 
+    \begin{bmatrix}
+        \frac{1}{3} & \frac{1}{3} & \frac{1}{3} & 0 & \cdots & \cdots & \cdots & \cdots & 0\\
+        0 & \frac{1}{3} & \frac{1}{3} & \frac{1}{3} & & & & & \vdots \\
+        \vdots & & & & \ddots & & & & \vdots \\
+        \vdots & & & & & \frac{1}{3} & \frac{1}{3} & \frac{1}{3} & 0\\
+        0 & \cdots & \cdots & \cdots & \cdots & 0 & \frac{1}{3} & \frac{1}{3} & \frac{1}{3}\\
+    \end{bmatrix}
+\end{equation*}
+\subsection*{C}
+How sparse is $\mathbf{G}$? What percent of it is zero?
+\subsubsection*{Solution}
+The precise percentage depends on the solution to the boundary problem but it will be around $\frac{N-3}{N}\times 100\%$

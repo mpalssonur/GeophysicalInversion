@@ -1,2 +1,77 @@
 \section*{Problem 1.5}
-Content
+Simplify Eq. (1.20) by assuming that there is only one sample $S_{1j}$ whose composition is measured. Consider the case where the composition of the $p$ factors is known, but their proportions in the sample are unknown, and rewrite Eq. (10.2) in the form $ \mathbf{d} = \mathbf{Gm}$.
+\subsection*{Solution}
+Looking at the matrix form of Eq. (1.20) $\mathbf{S = CF}$
+\begin{equation*}
+\begin{bmatrix}
+S_{11} & & & & \\
+& \ddots & & & \\
+& & S_{ij} & & \\
+& & & \ddots & \\
+& & & & S_{NM}
+\end{bmatrix}
+=
+\begin{bmatrix}
+C_{11} & & & & \\
+& \ddots & & & \\
+& & C_{ik} & & \\
+& & & \ddots & \\
+& & & & C_{Np}
+\end{bmatrix}
+\begin{bmatrix}
+F_{11} & & & & \\
+& \ddots & & & \\
+& & F_{kj} & & \\
+& & & \ddots & \\
+& & & & F_{pM}
+\end{bmatrix}
+\end{equation*}
+
+If we have $N=1$ then this turns into 
+
+\begin{equation*}
+\begin{bmatrix}
+S_{11} & \cdots & S_{1M}
+\end{bmatrix}
+=
+\begin{bmatrix}
+C_{11} & \cdots & C_{1k} & \cdots & C_{1p}
+\end{bmatrix}
+\begin{bmatrix}
+F_{11} & & & & \\
+& \ddots & & & \\
+& & F_{kj} & & \\
+& & & \ddots & \\
+& & & & F_{pM}
+\end{bmatrix}
+\end{equation*}
+
+Using the identity relating taking the transpose of a matrix and matrix multiplication; $(\mathbf{AB})^T = \mathbf{B}^T \mathbf{A}^T$, we get
+
+
+\begin{equation*}
+\begin{bmatrix}
+S_{11}\\
+\vdots \\
+S_{j1} \\
+\vdots \\
+S_{M1}
+\end{bmatrix}
+=
+\begin{bmatrix}
+F_{11} & & & & \\
+& \ddots & & & \\
+& & F_{jk} & & \\
+& & & \ddots & \\
+& & & & F_{Mp}
+\end{bmatrix}
+\begin{bmatrix}
+C_{11}\\
+\vdots \\
+C_{k1} \\
+\vdots \\
+C_{p1}
+\end{bmatrix}
+\end{equation*}
+
+This gives us the form  we are looking for with $\mathbf{d = S}$, $\mathbf{G = F}$, $\mathbf{m = C}$
